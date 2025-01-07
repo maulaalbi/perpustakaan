@@ -9,7 +9,7 @@ use App\Http\Middleware\AdminSessionMiddleware;
 
 Route::get('/', function () {
     return view('login.admin' ,[
-        "tittle" => "LOGIN ADMIN"
+        "tittle" => "LOGIN ADMIN",
     ]);
 });
 Route::get('/dashboard', function () {

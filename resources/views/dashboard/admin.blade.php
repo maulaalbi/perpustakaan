@@ -414,6 +414,151 @@ body {
              
           </div>
       </div>
+      <ul class="nav-menu ml-10">
+        <li><a href="/formBuku" class="nav-button"><i class="fas fa-plus-circle"></i> Tambah Buku</a></li>
+      </ul>
+      <main class="main-content mt-0">
+        <div class="container">
+            <div class="books-card">
+                <div class="card-header">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                    </svg>
+                    <h2 class="uppercase">Daftar Buku Dipinjam</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr class="uppercase" >
+                
+                                <th  class="font-bold text-black">ISBN</th>
+                                <th  class="font-bold text-black">Title</th>
+                                <th  class="font-bold text-black">Status</th>
+                                <th  class="font-bold text-black">Nama Peminjam</th>
+                                <th  class="font-bold text-black">Nim Peminjam</th>
+                                <th  class="font-bold text-black">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    
+                            @foreach (collect(session('book'))->filter(function($book) {
+                              return $book['status'] == 1;
+                          })  as $books )
+                            
+                                
+                            
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $books['isbn'] }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $books['judul'] }}
+                                </td>
+                                <td class="px-6 py-4 uppercase">
+                                  @if ($books['status'] ==0)
+                                      {{ "Buku tersedia" }}
+                                  @elseif ($books['status']==1)
+                                      {{ "Buku Sedang Dipinjam" }}
+              
+                                  @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $books['nama_peminjam'] }}
+                                </td>
+                
+                                <td class="px-6 py-4">
+                                    {{ $books['nim_peminjam'] }}
+                                </td>
+                                <td class="px-6 py-4">
+                                  <button class=" uppercase text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"> 
+              
+                                      <a href="/book/{{ $books['id'] }}" `>BUKU DIKEMBALIKAN</a>
+                  
+                                      </button>
+                              </td>
+                            </tr>
+              
+                            @endforeach
+                            
+                            
+                            
+                        </tbody>
+              
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="main-content">
+      <div class="container">
+          <div class="books-card">
+              <div class="card-header">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                  </svg>
+                  <h2 class="uppercase">Daftar Buku Tersedia</h2>
+              </div>
+              
+              <div class="table-container">
+                  <table>
+                      <thead>
+                          <tr class="uppercase">
+              
+                              <th class="font-bold text-black">ISBN</th>
+                              <th class="font-bold text-black"class="font-bold text-black">Title</th>
+                              <th class="font-bold text-black">Status</th>
+                              <th class="font-bold text-black">Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                
+                          @foreach (collect(session('book'))->filter(function($book) {
+                            return $book['status'] == 0;
+                        })  as $books )
+                          
+                              
+                          
+                          <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                  {{ $books['isbn'] }}
+                              </th>
+                              <td class="px-6 py-4">
+                                  {{ $books['judul'] }}
+                              </td>
+                              <td class="px-6 py-4 uppercase">
+                                @if ($books['status'] ==0)
+                                    {{ "Buku tersedia" }}
+                                @elseif ($books['status']==1)
+                                    {{ "Buku Sedang Dipinjam" }}
+              
+                              </td>
+                              <td>
+                                
+                            
+                              @endif
+                              <td>
+                                  <button class=" uppercase text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"> 
+              
+                                  <a href="/book/{{ $books['id'] }}" `>PINJAM BUKU</a>
+              
+                                  </button>
+              
+                              </td>
+                          
+                          </tr>
+              
+                          @endforeach
+                          
+                          
+                          
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </main>
     </div>
 
   </div>

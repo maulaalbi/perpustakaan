@@ -32,7 +32,7 @@ class BookController extends Controller
             $book = $this->bookService->getBook();
             Session::put("book" , $book);
             
-            return redirect("/tersedia");
+            return redirect("/dashboard");
             
             
 
@@ -68,7 +68,7 @@ class BookController extends Controller
             $book = $this->bookService->getBook();
             Session::put("book" , $book);
 
-            return redirect("/borrow");
+            return redirect("/dashboard");
             // return ApiResponseClass::sendResponse($data, 'success', 200);
             }catch (BookServiceException $err) {
                 return ApiResponseClass::throw($err, $err->errors(), 400);

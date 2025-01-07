@@ -1,19 +1,19 @@
-<header class="">
+{{-- <header class="">
     <nav class="bg-black border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
               <a href="/dashboard" class="flex mr-4">
                 <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="mr-3 h-8" alt="FlowBite Logo" />
-                <span class="self-center  text-sm font-medium uppercase text-white">Dashboard</span>
+                <span class="self-center  text-sm font-medium  text-white">Dashboard</span>
               </a>
               <a href="/tersedia" class="flex mr-4">
-                <span class="self-center text-sm font-medium uppercase	 text-white">List Semua Buku</span>
+                <span class="self-center text-sm font-medium 	 text-white">Daftar Semua Buku</span>
               </a>
               <a href="/borrow" class="flex mr-4">
-                <span class="self-center text-sm font-medium uppercase	 text-white">List Buku Dipinjam</span>
+                <span class="self-center text-sm font-medium 	 text-white">Daftar Buku Dipinjam</span>
               </a>
               <a href="/formBuku" class="flex mr-4">
-                <span class="self-center text-sm font-medium uppercase	 text-white">Tambah Buku</span>
+                <span class="self-center text-sm font-medium 	 text-white">Tambah Buku</span>
               </a>
 
                 
@@ -43,3 +43,78 @@
         </div>
     </nav>
   </header>
+
+   --}}
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <i class="fas fa-book-reader"></i>
+                <span>LibraryApp</span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <ul class="nav-menu">
+                <li><a href="/dashboard" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                {{-- <li><a href="/tersedia" class="nav-link"><i class="fas fa-book"></i> Semua Buku</a></li>
+                <li><a href="#" class="nav-link"><i class="fas fa-book"></i> Buku Tersedia</a></li>
+                <li><a href="/borrow" class="nav-link"><i class="fas fa-book"></i> Buku Dipinjam</a></li> --}}
+                {{-- <li><a href="/formBuku" class="nav-button"><i class="fas fa-plus-circle"></i> Tambah Buku</a></li> --}}
+            </ul>
+
+            <!-- User Profile & Mobile Toggle -->
+            <div class="nav-right">
+                <div class="user-profile">
+                    <img src="https://github.com/shadcn.png" alt="User">
+                    <div class="profile-dropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <button class="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="#"><i class="fas fa-books"></i> Semua Buku</a>
+            <a href="#"><i class="fas fa-book"></i> Buku Dipinjam</a>
+            <a href="#" class="mobile-button"><i class="fas fa-plus-circle"></i> Tambah Buku</a>
+        </div>
+    </nav>
+
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const userProfile = document.querySelector('.user-profile');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // User profile dropdown
+        userProfile.addEventListener('click', () => {
+            userProfile.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -8,13 +8,7 @@
     
 </head>
 <body>
-    @if(isset($error))
-    <div class="row">
-        <div class="alert alert-danger" role="alert">
-            {{ $error }}
-        </div>
-    </div>
-    @endif
+    
 <div class="container px-4 py-5 w-full ">
 
     {{-- <div class="row align-items-center g-lg-5 py-5"> --}}
@@ -43,6 +37,13 @@
                         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                             LOGIN 
                         </h2>
+                        @if(session('error'))
+                        <div class="row mt-6">
+                            <div class="alert alert-danger text-red-700" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        </div>
+                        @endif
                         <form class="mt-8 space-y-6" action="/admin/login" method="POST">
                             @csrf
                             <div>
@@ -56,6 +57,7 @@
                             <button type="submit" class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Masuk</button>
             
                         </form>
+                        
                     </div>
                 </div>
             </div>

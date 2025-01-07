@@ -88,8 +88,8 @@ class AdminController extends Controller
            
 
         }catch (ValidationException $err) {
-            return ApiResponseClass::throw($err, $err->errors(), 400);
-            // return redirect("/api/admin/login");
+            // return ApiResponseClass::throw($err, $err->errors(), 400);
+            return redirect("/")->with('error', 'Email or Password Wrong');
 
         } catch (Exception $err) {
             return ApiResponseClass::throw($err, $err->getMessage(), 500);

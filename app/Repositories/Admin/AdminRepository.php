@@ -17,9 +17,9 @@ class AdminRepository extends BaseRepository implements AdminRepositoryInterface
         return $admin->toArray();
     }
 
-    public function getByEmail(string $email): array
+    public function getByEmail(string $email): ?Admin
     {
-        return $this->model->where("email" , $email)->first()->toArray();
+        return $this->model->where("email" , $email)->first();
     }
 
     

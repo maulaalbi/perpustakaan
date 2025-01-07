@@ -10,7 +10,7 @@
 </head>
 <body>
     <x-navbar></x-navbar>
-    <div class="p-4 md:p-5">
+    <div class="p-4 md:p-5 mt-11">
             
         
         <form class="space-y-4" action="/updateBook/{{ $books->id }}" method="post">
